@@ -1,1 +1,10 @@
-<p>Proyectos-dos works!</p>,
+<h2>Proyecto Dos</h2>
+
+<add-proyecto (newProyecto)="onProyectoAgregado($event)"></add-proyecto>
+
+<h3>Listado</h3>
+<ul>
+  @for(proyecto of proyectos(); track $index) {
+    <li>{{ proyecto.nombre }} - {{ proyecto.descripcion }}</li>
+  }
+</ul>

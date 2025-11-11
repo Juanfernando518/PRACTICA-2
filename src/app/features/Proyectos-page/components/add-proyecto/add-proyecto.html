@@ -1,0 +1,24 @@
+<div>
+  <h3>Agregar Proyecto</h3>
+
+  <input 
+    type="text"
+    placeholder="Nombre del proyecto"
+    [value]="name()"
+    (input)="changeName(txtName.value)"
+    #txtName
+  >
+
+  <input 
+    type="text"
+    placeholder="Descripción del proyecto"
+    [value]="description()"
+    (input)="changeDescription(txtDescription.value)"
+    #txtDescription
+  >
+
+  <button (click)="addProyecto()">Agregar Proyecto</button>
+  <button (click)="deleteProyecto()" style="margin-left: 10px;">
+    Eliminar Proyecto
+  </button>
+</div>
