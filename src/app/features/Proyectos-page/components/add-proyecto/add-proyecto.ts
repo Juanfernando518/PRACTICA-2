@@ -16,7 +16,6 @@ export class AddProyecto {
   description = signal('');
   newProyecto = output<ProyectoInt>();
 
-  // ✅ Agregar proyecto
   addProyecto() {
     const newProyecto: ProyectoInt = {
       id: Math.floor(Math.random() * 1000),

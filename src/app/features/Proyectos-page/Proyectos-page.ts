@@ -11,11 +11,11 @@ import { ProyectoListados } from "./components/proyecto-listados/proyecto-listad
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProyectosPage {
-  // señales para los inputs
+
   name = signal('');
   descripcion = signal('');
 
-  // lista inicial de proyectos
+
   proyectos = signal<ProyectoInt[]>([
     {
       id: 1,
@@ -24,12 +24,11 @@ export class ProyectosPage {
     }
   ]);
 
-  // función para agregar proyectos
   agregarProyecto() {
     const nombre = this.name().trim();
     const descripcion = this.descripcion().trim();
 
-    if (!nombre || !descripcion) return; // evita campos vacíos
+    if (!nombre || !descripcion) return; 
 
     const nuevoProyecto: ProyectoInt = {
       id: this.proyectos().length + 1,
@@ -37,10 +36,8 @@ export class ProyectosPage {
       descripcion
     };
 
-    // agrega el nuevo proyecto al array
     this.proyectos.update(lista => [...lista, nuevoProyecto]);
 
-    // limpia los inputs
     this.name.set('');
     this.descripcion.set('');
   }
