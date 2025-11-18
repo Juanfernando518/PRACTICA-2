@@ -1,5 +1,7 @@
-import {FormGroup, ValidationErrors } from '@angular/forms'
+import { FormGroup, ValidationErrors, FormArray } from '@angular/forms';
+
 export class FormUtils {
+
     static isValidField(form: FormGroup, fieldName:string): boolean | null {
         return !!form.controls[fieldName].errors && form.controls[fieldName].touched
     }
@@ -9,7 +11,8 @@ export class FormUtils {
 
         const errors = form.controls[fieldName].errors ??{};
         return this.getTextError(errors);
-}
+    }
+
     static getTextError(errors: ValidationErrors): string | null {
         for(const key of Object.keys(errors)){
             switch(key){
@@ -26,5 +29,15 @@ export class FormUtils {
         return null;
     }
 
+    // ⭐⭐⭐ MÉTODOS PARA FORMARRAY ⭐⭐⭐
 
+    static isValidFieldInArray(formArray: FormArray, index: number): boolean {
+        return !!formArray.at(index).errors && formArray.at(index).touched;
+    }
+
+    static getFieldErrorInArray(formArray: FormArray, index: number): string | null {
+        const errors = formArray.at(index).errors ?? {};
+        return this.getTextError(errors);
+    }
+    
 }
